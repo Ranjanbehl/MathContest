@@ -4,12 +4,27 @@ import java.math.*;
 public class Divisor {
 
 	public static void main(String args[]) {
-		System.out.print("Enter the number :  ");
-		Scanner scanner = new Scanner(System.in);
-		long num = scanner.nextLong();
+		long begin = System.currentTimeMillis();
+		long current = 1L;
+		while(current <= 1000000){
+			if(genus(4, current)==divisorSum(current)){
+				System.out.println(current);
+			}
+			current++;
+		}
+		long end = System.currentTimeMillis();
+		System.out.println("Processing time: " + (end-begin)/1000.0 + " seconds");
+	}
+	
+	public static long genus(long series, long number){
+		return (long) ((series + 0.5)*number);
+	}
+	
+	public static long divisorSum(long input){
+		long num = input;
 		
 		
-		int sum = 1;
+		long sum = 1;
 		int half = (int)Math.sqrt(num);
 
 		for (int i = 2; i <= half; i++) {
@@ -25,8 +40,8 @@ public class Divisor {
 				}
 			}
 		}
-		System.out.print("Sum of the Divisors = " + sum);
-		scanner.close();
+		sum+=num;
+		return sum;
 	}
 	
 
