@@ -4,23 +4,30 @@ import java.math.*;
 public class Divisor {
 
 	public static void main(String args[]) {
-
-		Scanner scanner = new Scanner(System.in);
-		long num = scanner.nextInt(), i;
 		System.out.print("Enter the number :  ");
-		int sum = 0;
+		Scanner scanner = new Scanner(System.in);
+		long num = scanner.nextLong();
+		
+		
+		int sum = 1;
+		int half = (int)Math.sqrt(num);
 
-		for (i = 2; i <= num / 2; i++) {
+		for (int i = 2; i <= half; i++) {
 			{
 
 				if (num % i == 0) {
-
-					sum += (i * (i + 1) / 2); //sum
+					sum+=i;
+					long d = (num/i);
+					if(d!=i){
+						sum+=d;
+					}
+					//sum
 				}
 			}
 		}
 		System.out.print("Sum of the Divisors = " + sum);
 		scanner.close();
 	}
+	
 
 }
